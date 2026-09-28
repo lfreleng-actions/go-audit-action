@@ -45,11 +45,6 @@ jobs:
           allowed-endpoints: >
             ${{ env.CONNECTION_ALLOW_LIST }}
 
-      - name: "Checkout repository"
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
       - name: "Checkout test project: lfreleng-actions/test-go-project"
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -115,7 +110,7 @@ jobs:
       # tool versions: the clean fixture must pass both
       - name: "Running local action: static analysis tools"
         id: static-audit
-        uses: ./
+        uses: $/
         with:
           path_prefix: test-project
           go_version: '1.25.11'
@@ -130,7 +125,7 @@ jobs:
       # asserting a fixed verdict
       - name: "Running local action: govulncheck reporting"
         id: vuln-audit
-        uses: ./
+        uses: $/
         with:
           path_prefix: test-project
           go_version: '1.25.11'
@@ -143,7 +138,7 @@ jobs:
       # the go-version-file input
       - name: "Running local action: version from go_version_file"
         id: version-file-audit
-        uses: ./
+        uses: $/
         with:
           path_prefix: test-project
           govulncheck: 'false'
@@ -251,11 +246,6 @@ jobs:
           allowed-endpoints: >
             ${{ env.CONNECTION_ALLOW_LIST }}
 
-      - name: "Checkout repository"
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
       - name: "Checkout test project: onap/multicloud-k8s"
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -271,7 +261,7 @@ jobs:
       # failing verdict for both tools.
       - name: "Running local action: full audit (soft fail)"
         id: full-audit
-        uses: ./
+        uses: $/
         with:
           path_prefix: test-project/src/k8splugin
           go_version: '1.25.11'
@@ -284,7 +274,7 @@ jobs:
       - name: "Running local action: hard fail on findings"
         id: hard-fail
         continue-on-error: true
-        uses: ./
+        uses: $/
         with:
           path_prefix: test-project/src/k8splugin
           go_version: '1.25.11'
@@ -380,22 +370,17 @@ jobs:
           allowed-endpoints: >
             ${{ env.CONNECTION_ALLOW_LIST }}
 
-      - name: "Checkout repository"
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          persist-credentials: false
-
       - name: "Running local action with invalid boolean"
         id: bad-bool
         continue-on-error: true
-        uses: ./
+        uses: $/
         with:
           govulncheck: 'yes'
 
       - name: "Running local action with unpinned tool version"
         id: bad-version
         continue-on-error: true
-        uses: ./
+        uses: $/
         with:
           gosec: 'true'
           gosec_version: 'latest'
@@ -403,14 +388,14 @@ jobs:
       - name: "Running local action with metacharacter version"
         id: bad-version-chars
         continue-on-error: true
-        uses: ./
+        uses: $/
         with:
           govulncheck_version: 'v1.5.0;id'
 
       - name: "Running local action with workspace-escaping path"
         id: escape-path
         continue-on-error: true
-        uses: ./
+        uses: $/
         with:
           path_prefix: /etc
 
@@ -421,7 +406,7 @@ jobs:
       - name: "Running local action with escaping output directory"
         id: escape-output
         continue-on-error: true
-        uses: ./
+        uses: $/
         with:
           go_version: '1.25.11'
           output_directory: /opt/escape-test
@@ -429,7 +414,7 @@ jobs:
       - name: "Running local action with no tools enabled"
         id: no-tools
         continue-on-error: true
-        uses: ./
+        uses: $/
         with:
           govulncheck: 'false'
           gosec: 'false'
