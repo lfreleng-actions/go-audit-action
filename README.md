@@ -7,7 +7,7 @@
 
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable-next-line MD013 -->
-[![Linux Foundation](https://img.shields.io/badge/Linux-Foundation-blue)](https://linuxfoundation.org/) [![Source Code](https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white&color=blue)](https://github.com/lfreleng-actions/go-audit-action) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![pre-commit.ci status badge]][pre-commit.ci results page] [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lfreleng-actions/go-audit-action/badge)](https://scorecard.dev/viewer/?uri=github.com/lfreleng-actions/go-audit-action)
+[![Linux Foundation](https://img.shields.io/badge/Linux-Foundation-blue)](https://linuxfoundation.org/) [![Source Code](https://img.shields.io/badge/GitHub-100000?logo=github&logoColor=white&color=blue)](https://github.com/lfreleng-actions/go-audit-action) [![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0) [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/lfreleng-actions/go-audit-action/badge)](https://scorecard.dev/viewer/?uri=github.com/lfreleng-actions/go-audit-action)
 <!-- prettier-ignore-end -->
 
 Runs govulncheck, gosec and staticcheck security/static audits for Go
@@ -208,6 +208,3 @@ steps:
 - The `go install` builds happen outside the project directory, so
   the audited module's own `go.mod` never influences which tool
   version installs
-
-[pre-commit.ci results page]: https://results.pre-commit.ci/latest/github/lfreleng-actions/go-audit-action/main
-[pre-commit.ci status badge]: https://results.pre-commit.ci/badge/github/lfreleng-actions/go-audit-action/main.svg
